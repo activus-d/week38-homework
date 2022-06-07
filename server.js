@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
-const PORT = 3000
 const cors = require('cors')
+const PORT = 3000
 
+
+app.use(cors())
 
 const footballClubs = {
     'manchester united': {
@@ -32,7 +34,7 @@ app.get( '/', ( request, response ) => {
 app.get( '/api/:footballClub', ( request, response ) => {
     let footballClub = request.params.footballClub.toLowerCase()
     if( footballClubs[footballClub] ) {
-        response.json(football[footballClub])
+        response.json(footballClubs[footballClub])
     }else {
         response.json('unknown')
     }
